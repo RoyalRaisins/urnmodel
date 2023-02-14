@@ -1,0 +1,6 @@
+﻿  ortestkit.cpp
+D:\IST\DGGenerator\DGGenerator\ortestkit.cpp(21,28): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\IST\DGGenerator\DGGenerator\ortestkit.cpp(35,28): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\IST\DGGenerator\DGGenerator\ortestkit.cpp(53,28): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\IST\DGGenerator\DGGenerator\ortestkit.cpp(75,28): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+  DGGenerator.vcxproj -> D:\IST\DGGenerator\x64\Debug\DGGenerator.exe
