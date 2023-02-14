@@ -1,5 +1,6 @@
 #include "testkit.h"
 #include "dgurn.h"
+#include "simpleurn.h"
 #include <cmath>
 #include <string>
 #include <iostream>
@@ -39,14 +40,8 @@ double getaverageprecision(std::vector<testinstance*> instances) {
 }
 
 void testTest(int notestinstances, int noball, int maxcost, int distrib) {
-	std::vector<testinstance*> results;
-	for (int i = 0; i < notestinstances; i++) {
-		urn u(noball, distrib);
-		sampler samp(maxcost, &u);
-		testinstance* instance = new testinstance();
-		results.push_back(instance);
-		instance->recordedsample(&samp);
-	}
+	struct params p(noball, distrib, 0);
+	std::vector<testinstance*> results = generateinstances<simpleurn>(notestinstances, noball, maxcost, p); //classes with virtual functions do not work well with template
 	double average = getaverageprecision(results);
 	std::cout << "the average precision is " << average << std::endl;
 	std::vector<double> epsilons = { 0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45 };
@@ -59,17 +54,8 @@ void testTest(int notestinstances, int noball, int maxcost, int distrib) {
 
 
 
-void dgtestTest(int notestinstances, int noball, int maxcost, double prob) {
-	/*std::vector<testinstance*> results;
-	for (int i = 0; i < notestinstances; i++) {
-		dgurn u(noball, prob);
-		sampler samp(maxcost, &u);
-		testinstance* instance = new testinstance();
-		results.push_back(instance);
-		instance->recordedsample(&samp);
-	}*/
-	
-	struct params p(noball, 0, prob);
+void dgtestTest(int notestinstances, int noball, int maxcost, double prob, int maxnocycle, int maxcyclelen) {
+	struct params p(noball, 0, prob, maxnocycle, maxcyclelen);
 	std::vector<testinstance*> results = generateinstances<dgurn>(notestinstances, noball, maxcost, p);
 	std::vector<double> epsilons = { 0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45 };
 	int noep = epsilons.size();
@@ -81,10 +67,6 @@ void dgtestTest(int notestinstances, int noball, int maxcost, double prob) {
 	}
 }
 
-
-void dgtestcycled(int notestinstances, int noball, int maxcost, double prob) {
-
-}
 
 template<class T> T* urncreator(struct params p) {
 	return new T(p);

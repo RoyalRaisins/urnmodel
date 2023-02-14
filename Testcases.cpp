@@ -8,9 +8,10 @@ void testcase1()  {
 }
 
 void testcase2() {
-	std::cout << "Input the number of testcases, the number of balls, the maxcost and the probalility for each edge to be spawned\n";
-	int noinstances, noballs, maxcost;
+	std::cout << "Input the number of testcases, the number of balls, the maxcost, the probalility for each edge to be spawned, the max number of cycles and the max cycle length\n";
+	std::cout << "Input 0 for max number of cycle to prevent cycle creation.\n";
+	int noinstances, noballs, maxcost, maxnocycle, maxcyclelen;
 	double prob;
-	std::cin >> noinstances >> noballs >> maxcost >> prob;
-	dgtestTest(noinstances, noballs, maxcost, prob);
+	std::cin >> noinstances >> noballs >> maxcost >> prob >> maxnocycle >> maxcyclelen;
+	dgtestTest(noinstances, noballs, maxcost, prob, maxnocycle, maxcyclelen);
 }

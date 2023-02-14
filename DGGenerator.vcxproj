@@ -131,12 +131,14 @@
     <ClCompile Include="DGGenerator.cpp" />
     <ClCompile Include="dgurn.cpp" />
     <ClCompile Include="ortestkit.cpp" />
+    <ClCompile Include="simpleurn.cpp" />
     <ClCompile Include="Testcases.cpp" />
     <ClCompile Include="urn.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="algorithm.h" />
     <ClInclude Include="dgurn.h" />
+    <ClInclude Include="simpleurn.h" />
     <ClInclude Include="testcases.h" />
     <ClInclude Include="testkit.h" />
     <ClInclude Include="urn.h" />

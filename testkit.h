@@ -15,8 +15,7 @@ public:
 double getprecision(std::vector<testinstance*> instances, double targetdeviation);
 
 void testTest(int notestinstances, int noball, int maxcost, int distrib);
-void dgtestTest(int notestinstances, int noball, int maxcost, double prob);
-void dgtestcycled(int notestinstances, int noball, int maxcost, double prob);
+void dgtestTest(int notestinstances, int noball, int maxcost, double prob, int maxnocycle, int maxcyclelen);
 
 template<class T> std::vector<testinstance*> generateinstances(int notestinstances, int noball, int maxcost, struct params p);
 template<class T> urn* urncreator(struct params p);

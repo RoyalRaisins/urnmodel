@@ -1,6 +1,7 @@
 #include "dgurn.h"
 #include <random>
 #include <queue>
+#include <cmath>
 dgurn::dgurn(int noballs,double prob) {
 	this->graph = std::map<int,std::set<int>>();
 	this->setnoball(noballs); 
@@ -14,6 +15,7 @@ void dgurn::generateepgraph(double prob) {
 	std::mt19937 gen(rd());
 	double upperlimit = 1 / prob;
 	std::uniform_real_distribution<> distrib(0, upperlimit);
+	for (int i = 0; i < noball; i++)this->graph[i] = std::set<int>();
 	for (int i = 0; i < noball; i++) {
 		for (int j = 0; j < noball && j != i; j++) {
 			double rand = distrib(gen);
@@ -84,7 +86,7 @@ void dgurn::spawncycle(int vertice,int length) {
 		}
 		srand(time(0));
 		std::random_shuffle(vertexes.begin(), vertexes.end());
-		for (int i = 0; i < length; i++)path.push_back(vertexes[i]);
+		for (int i = 0; i < length-1; i++)path.push_back(vertexes[i]);
 	}
 	path.push_back(vertice);
 	drawcycle(path);
@@ -92,16 +94,30 @@ void dgurn::spawncycle(int vertice,int length) {
 void dgurn::drawcycle(std::vector<int> path) {
 	int length = path.size(),start = path[0];
 	for (int i = 1; i < length-1; i++) {
-		if (graph[start].find(path[i]) != graph[start].end())graph[start].insert(path[i]);
+		if (graph[start].find(path[i]) == graph[start].end())graph[start].insert(path[i]);
 		start = path[i];
 	}
 }
 
+void dgurn::randcylify(int maxno, int maxlength) {
+	int noballs = this->getnoball();
+	maxlength = std::min(noballs, maxlength);
+	srand(time(0));
+	int nocycle = rand() % maxno + 1;
+	for (int i = 0; i < nocycle; i++) {
+		int vertice = rand() % noballs, len = rand()%maxlength + 1;
+		spawncycle(vertice, len);
+	}
+}
+
 dgurn::dgurn(struct params p) {
-	int noballs = p.noball;
+	int noballs = p.noball, maxnocycle = p.maxnocycle, maxcyclelen = p.maxcyclelen;
 	double prob = p.prob;
 	this->graph = std::map<int, std::set<int>>();
 	this->setnoball(noballs);
 	this->generateepgraph(prob);
+	if (maxnocycle > 0) {
+		randcylify(maxnocycle, maxcyclelen);
+	}
 	this->computesum();
 }
