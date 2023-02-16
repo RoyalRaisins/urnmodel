@@ -22,7 +22,7 @@ public:
 	void computesum();
 
 	void spawncycle(int vertice, int length);
-	void randcylify(int maxno, int maxlength);
+	void randcyclify(int maxno, int maxlength);
 	void drawcycle(std::vector<int> path);
 };
 #endif // ! DGURN

@@ -100,7 +100,7 @@ void dgurn::drawcycle(std::vector<int> path) {
 	}
 }
 
-void dgurn::randcylify(int maxno, int maxlength) {
+void dgurn::randcyclify(int maxno, int maxlength) {
 	int noballs = this->getnoball();
 	maxlength = std::min(noballs, maxlength);
 	srand(time(0));
