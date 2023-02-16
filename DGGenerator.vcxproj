@@ -133,6 +133,7 @@
     <ClCompile Include="ortestkit.cpp" />
     <ClCompile Include="simpleurn.cpp" />
     <ClCompile Include="Testcases.cpp" />
+    <ClCompile Include="tools.cpp" />
     <ClCompile Include="urn.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -141,6 +142,7 @@
     <ClInclude Include="simpleurn.h" />
     <ClInclude Include="testcases.h" />
     <ClInclude Include="testkit.h" />
+    <ClInclude Include="tools.h" />
     <ClInclude Include="urn.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

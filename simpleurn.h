@@ -1,5 +1,8 @@
 #pragma once
 #include "urn.h"
+#ifndef SIMPLEURN
+#define SIMPLEURN
+
 
 class simpleurn :public urn {
 public:
@@ -11,3 +14,4 @@ public:
 	int getweight(int index);
 	int getsum();
 };
+#endif // !URN

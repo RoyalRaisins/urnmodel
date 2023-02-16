@@ -1,9 +1,12 @@
 #include "testkit.h"
 #include "dgurn.h"
 #include "simpleurn.h"
+#include "tools.h"
+
 #include <cmath>
 #include <string>
 #include <iostream>
+
 void testinstance::recordedsample(sampler* s) {
 	maxcost = s->getmaxcost();
 	groundtruth = s->getgtsum();
@@ -80,7 +83,34 @@ template<class T> std::vector<testinstance*> generateinstances(int notestinstanc
 		sampler* samp = new sampler(maxcost, u);
 		testinstance* instance = new testinstance();
 		results.push_back(instance);
+		clock_t start, end;
+		start = clock();
 		instance->recordedsample(samp);
+		end = clock();
+		std::cout << "Sampling for instance " << i << " has taken " << end - start << " milliseconds.\n";
+
 	}
 	return results;
+}
+
+void inputtest(std::string path,int groundtruthsum) {
+	dgurn* urn = fromntfile(path, groundtruthsum);
+	std::vector<testinstance*> results;
+	results.push_back(new testinstance);
+	sampler* samp = new sampler(urn->getnoball() * 2, urn);
+	clock_t start, end;
+	start = clock();
+	results[0]->recordedsample(samp);
+	end = clock();
+	std::cout << "Sampling for the instance has taken " << end - start << " milliseconds.\n";
+
+	std::vector<double> epsilons = { 0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45 };
+	int noep = epsilons.size();
+	double average = getaverageprecision(results);
+	std::cout << "the average precision is " << average << std::endl;
+	for (int i = 0; i < noep; i++) {
+		double precision = getprecision(results, 1 / epsilons[i]);
+		printprecisionresult(epsilons[i], precision);
+	}
+
 }

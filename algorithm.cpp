@@ -1,5 +1,5 @@
 #include "algorithm.h"
-
+#include "time.h"
 sampler::sampler(int maxcost) { 
 	this->maxcost = this->budget = maxcost; 
 	this->u = new urn(0); 

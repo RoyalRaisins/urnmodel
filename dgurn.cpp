@@ -33,12 +33,13 @@ void dgurn::computesum() {
 int dgurn::getweight(int index) {
 	std::queue<int> level;
 	std::set<int> reachable;
-	reachable.insert(index);
+	//reachable.insert(index);
 	auto end = graph[index].end();
 	for (auto itr = graph[index].begin(); itr != end; itr++) {
 		level.push(*itr);
 		reachable.insert(*itr);
 	}
+	std::cout << reachable.size() << std::endl;
 	while (!level.empty()) {
 		std::set<int> nextlevelset;
 		while (!level.empty()) {
@@ -121,3 +122,23 @@ dgurn::dgurn(struct params p) {
 	}
 	this->computesum();
 }
+
+dgurn::dgurn(std::vector<std::vector<int>> *edges, int noballs, int groundtruthsum) {
+	this->graph = std::map<int, std::set<int>>();
+	this->setnoball(noballs);
+	int noedge = edges->size();
+	for (int i = 0; i < noballs; i++)this->graph[i] = std::set<int>();
+	for (std::vector<int> v : (*edges)) {
+		this->graph[v[0]].insert(v[1]);
+	}
+	if (groundtruthsum < 0) {
+		clock_t start, end;
+		start = clock();
+		this->computesum();
+		end = clock();
+		std::cout << "Calculation for sum has taken " << end - start << " milliseconds.\n";
+	}
+	else this->setsum(groundtruthsum);
+}
+
+//d:\ggg.txt -1

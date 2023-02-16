@@ -15,3 +15,11 @@ void testcase2() {
 	std::cin >> noinstances >> noballs >> maxcost >> prob >> maxnocycle >> maxcyclelen;
 	dgtestTest(noinstances, noballs, maxcost, prob, maxnocycle, maxcyclelen);
 }
+
+void testcase3() {
+	std::string path;
+	int gtsum;
+	std::cout << "Input the path to the file and the ground truth for the digraph's sum (input -1 if it needs to be computed)\n";
+	std::cin >> path >> gtsum;
+	inputtest(path,gtsum);
+}

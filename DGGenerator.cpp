@@ -5,6 +5,7 @@
 #include "urn.h"
 #include "algorithm.h"
 #include "testcases.h"
+#include "tools.h"
 int main()
 {
    /* int noball;
@@ -21,11 +22,19 @@ int main()
     double estimate = samp.dosample();
     std::cout << "estimate: " << estimate << ", actual value: " << u->getsum();*/
     int cont = 1;
-    while (cont==1) {
-        //testcase1();
-        testcase2();
-        std::cout << "continue? (1 for continue)" << std::endl;
-        std::cin >> cont;
+    int choice;
+    std::cout << "Should test data be generated or inputed? 1 for the former, others for the latter\n";
+    std::cin >> choice;
+    if (choice == 1) {
+        while (cont == 1) {
+            //testcase1();
+            testcase2();
+            std::cout << "continue? (1 for continue)" << std::endl;
+            std::cin >> cont;
+        }
+    }
+    else {
+        testcase3();
     }
     return 0;
 }
