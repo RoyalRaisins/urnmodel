@@ -1,5 +1,6 @@
 #include "algorithm.h"
 #include "time.h"
+#include <cmath>
 sampler::sampler(int maxcost) { 
 	this->maxcost = this->budget = maxcost; 
 	this->u = new urn(0); 
@@ -8,7 +9,14 @@ sampler::sampler(int maxcost, urn* u) {
 	this->maxcost = this->budget = maxcost;
 	this->u = u;
 }
-
+sampler::sampler(int bn, double prob, double deviation, urn*u) {
+	d = deviation;
+	this->prob = prob;
+	double times = 1 / deviation;
+	double alpha = times * (times + 1) / (1 + sqrt(prob));
+	this->maxcost = alpha * bn;
+	this->u = u;
+}
 int sampler::getmaxcost(){
 	return maxcost;
 }
@@ -32,7 +40,8 @@ int sampler::getunirandno() {
 }
 
 int sampler::getgtsum() {
-	return u->getsum();
+	int ret = u->getsum();
+	return ret;
 }
 bool sampler::prepareRandgen() {
 	std::random_device rd;

@@ -3,6 +3,8 @@
 #include <utility>
 #include <map>
 #include <set>
+#include <time.h>
+#include <algorithm>
 #ifndef  DGURN
 #define DGURN
 

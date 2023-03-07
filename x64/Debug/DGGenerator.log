@@ -1,7 +1,19 @@
-﻿  dgurn.cpp
+﻿  DGGenerator.cpp
+  dgurn.cpp
 D:\IST\DGGenerator\DGGenerator\dgurn.cpp(60,25): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
 D:\IST\DGGenerator\DGGenerator\dgurn.cpp(88,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
 D:\IST\DGGenerator\DGGenerator\dgurn.cpp(96,26): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 D:\IST\DGGenerator\DGGenerator\dgurn.cpp(106,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
 D:\IST\DGGenerator\DGGenerator\dgurn.cpp(129,28): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  ortestkit.cpp
+D:\IST\DGGenerator\DGGenerator\ortestkit.cpp(25,28): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\IST\DGGenerator\DGGenerator\ortestkit.cpp(39,28): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\IST\DGGenerator\DGGenerator\ortestkit.cpp(51,28): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\IST\DGGenerator\DGGenerator\ortestkit.cpp(64,28): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\IST\DGGenerator\DGGenerator\ortestkit.cpp(108,28): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  tools.cpp
+D:\IST\DGGenerator\DGGenerator\tools.cpp(16,27): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\IST\DGGenerator\DGGenerator\tools.cpp(20,32): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\IST\DGGenerator\DGGenerator\tools.cpp(21,32): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
   DGGenerator.vcxproj -> D:\IST\DGGenerator\x64\Debug\DGGenerator.exe

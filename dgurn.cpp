@@ -118,7 +118,7 @@ dgurn::dgurn(struct params p) {
 	this->setnoball(noballs);
 	this->generateepgraph(prob);
 	if (maxnocycle > 0) {
-		randcylify(maxnocycle, maxcyclelen);
+		randcyclify(maxnocycle, maxcyclelen);
 	}
 	this->computesum();
 }

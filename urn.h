@@ -8,7 +8,7 @@
 class urn {
 private:
 	std::map<int, int> weights;
-	int noball = 1, sum = 0;
+	int noball = 1, sum = 0, maxweight;
 public:
 	urn() {};
 	urn(int noballs);
